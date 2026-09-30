@@ -1,0 +1,296 @@
+tests/metal/validate_kernels.swift:745:17: warning: initialization of immutable value 'origParam' was never used; consider replacing with assignment to '_' or removing it [#no-usage]
+743 |             fillConst(exp_avg, count: N, value: 0)
+744 |             fillConst(exp_avg_sq, count: N, value: 0)
+745 |             let origParam = readFloats(param, count: N)
+    |                 `- warning: initialization of immutable value 'origParam' was never used; consider replacing with assignment to '_' or removing it [#no-usage]
+746 |             // Skip actual dispatch — Adam kernels have complex signatures
+747 |             // Just check that the kernel was created successfully
+==============================================================
+ Metal Kernel Validation Suite
+ Device: Apple M1
+ Dirs:   src/shaders/, models/metal_compile_test
+==============================================================
+Found 1260 .metal files
+
+
+-- ColossalAI__multi_tensor_l2norm_kernel.metal  [2 kernel(s)]
+  PASS  cleanup: pipeline OK (threads: 1024)
+  PASS  cleanup_v2: pipeline OK (threads: 1024)
+
+-- ColossalAI__multi_tensor_l2norm_kernel_cu.metal  [2 kernel(s)]
+  PASS  cleanup: pipeline OK (threads: 1024)
+  PASS  cleanup_v2: pipeline OK (threads: 1024)
+
+-- DALI__hist.metal  [2 kernel(s)]
+  PASS  Histogram: pipeline OK (threads: 1024)
+  PASS  ZeroMem: pipeline OK (threads: 1024)
+
+-- DALI__hist_cu.metal  [2 kernel(s)]
+  PASS  Histogram: pipeline OK (threads: 1024)
+  PASS  ZeroMem: pipeline OK (threads: 1024)
+
+-- DALI__lookup.metal  [1 kernel(s)]
+  PASS  Lookup: pipeline OK (threads: 1024)
+
+-- DALI__lookup_cu.metal  [1 kernel(s)]
+  PASS  Lookup: pipeline OK (threads: 1024)
+
+-- Open3D__BallQuery.metal  [1 kernel(s)]
+  PASS  ball_query_kernel: pipeline OK (threads: 1024)
+
+-- Open3D__BallQuery_cu.metal  [1 kernel(s)]
+  PASS  ball_query_kernel: pipeline OK (threads: 1024)
+
+-- Open3D__InterpolatePoints.metal  [3 kernel(s)]
+  PASS  three_interpolate_grad_kernel: pipeline OK (threads: 1024)
+  PASS  three_interpolate_kernel: pipeline OK (threads: 1024)
+  PASS  three_nn_kernel: pipeline OK (threads: 1024)
+
+-- Open3D__InterpolatePoints_cu.metal  [3 kernel(s)]
+  PASS  three_interpolate_grad_kernel: pipeline OK (threads: 1024)
+  PASS  three_interpolate_kernel: pipeline OK (threads: 1024)
+  PASS  three_nn_kernel: pipeline OK (threads: 1024)
+
+-- Open3D__RoiPoolKernel.metal  [3 kernel(s)]
+  PASS  assign_pts_to_box3d: pipeline OK (threads: 1024)
+  PASS  get_pooled_idx: pipeline OK (threads: 1024)
+  PASS  roipool3d_forward: pipeline OK (threads: 1024)
+
+-- Open3D__RoiPoolKernel_cu.metal  [3 kernel(s)]
+  PASS  assign_pts_to_box3d: pipeline OK (threads: 1024)
+  PASS  get_pooled_idx: pipeline OK (threads: 1024)
+  PASS  roipool3d_forward: pipeline OK (threads: 1024)
+
+-- Open3D__TrilinearDevoxelize.metal  [2 kernel(s)]
+  PASS  TrilinearDevoxelizeGradKernel: pipeline OK (threads: 1024)
+  PASS  TrilinearDevoxelizeKernel: pipeline OK (threads: 1024)
+
+-- Open3D__TrilinearDevoxelize_cu.metal  [2 kernel(s)]
+  PASS  TrilinearDevoxelizeGradKernel: pipeline OK (threads: 1024)
+  PASS  TrilinearDevoxelizeKernel: pipeline OK (threads: 1024)
+
+-- exllamav2__exllamav2_exllamav2_ext_cuda_pack_tensor_cu.metal  [2 kernel(s)]
+  PASS  pack_rows_4_kernel: pipeline OK (threads: 1024)
+  PASS  pack_rows_6_kernel: pipeline OK (threads: 1024)
+
+-- gsplat__IntersectTile.metal  [1 kernel(s)]
+  PASS  intersect_offset_kernel: pipeline OK (threads: 1024)
+
+-- gsplat__IntersectTile_cu.metal  [1 kernel(s)]
+  PASS  intersect_offset_kernel: pipeline OK (threads: 1024)
+
+-- metal_output__ColossalAI__multi_tensor_l2norm_kernel.metal  [2 kernel(s)]
+  PASS  cleanup: pipeline OK (threads: 1024)
+  PASS  cleanup_v2: pipeline OK (threads: 1024)
+
+-- metal_output__Open3D__BallQuery.metal  [1 kernel(s)]
+  PASS  ball_query_kernel: pipeline OK (threads: 1024)
+
+-- metal_output__Open3D__InterpolatePoints.metal  [3 kernel(s)]
+  PASS  three_interpolate_grad_kernel: pipeline OK (threads: 1024)
+  PASS  three_interpolate_kernel: pipeline OK (threads: 1024)
+  PASS  three_nn_kernel: pipeline OK (threads: 1024)
+
+-- metal_output__Open3D__RoiPoolKernel.metal  [3 kernel(s)]
+  PASS  assign_pts_to_box3d: pipeline OK (threads: 1024)
+  PASS  get_pooled_idx: pipeline OK (threads: 1024)
+  PASS  roipool3d_forward: pipeline OK (threads: 1024)
+
+-- metal_output__Open3D__TrilinearDevoxelize.metal  [2 kernel(s)]
+  PASS  TrilinearDevoxelizeGradKernel: pipeline OK (threads: 1024)
+  PASS  TrilinearDevoxelizeKernel: pipeline OK (threads: 1024)
+
+-- metal_output__gsplat__IntersectTile.metal  [1 kernel(s)]
+  PASS  intersect_offset_kernel: pipeline OK (threads: 1024)
+
+-- metal_output__onnxruntime__attention_qk.metal  [1 kernel(s)]
+  PASS  ConvertAndCopyQK: pipeline OK (threads: 1024)
+
+-- metal_output__onnxruntime__bert_padding.metal  [4 kernel(s)]
+  PASS  getTokenOffset: pipeline OK (threads: 1024)
+  PASS  getTrtSequenceOffset: pipeline OK (threads: 1024)
+  PASS  getTrtSequenceOffset2d: pipeline OK (threads: 1024)
+  PASS  getTrtSequenceOffsetNoMask: pipeline OK (threads: 1024)
+
+-- metal_output__onnxruntime__fpA_intB_gemm_adaptor.metal  [2 kernel(s)]
+  PASS  transpose_uint8_matrix_and_convert_to_int8_kernel: pipeline OK (threads: 1024)
+  PASS  unpack_transpose_pack_uint4_to_int8_kernel_v2: pipeline OK (threads: 1024)
+
+-- metal_output__onnxruntime__longformer_global_impl.metal  [1 kernel(s)]
+  PASS  InitSequenceIndexKernel: pipeline OK (threads: 1024)
+
+-- metal_output__onnxruntime__ngram_repeat_block_impl.metal  [1 kernel(s)]
+  PASS  banRepeatedTokens: pipeline OK (threads: 1024)
+
+-- metal_output__warp__hashgrid.metal  [1 kernel(s)]
+  PASS  compute_cell_offsets: pipeline OK (threads: 1024)
+
+-- onnxruntime__attention_qk.metal  [1 kernel(s)]
+  PASS  ConvertAndCopyQK: pipeline OK (threads: 1024)
+
+-- onnxruntime__attention_qk_cu.metal  [1 kernel(s)]
+  PASS  ConvertAndCopyQK: pipeline OK (threads: 1024)
+
+-- onnxruntime__bert_padding.metal  [4 kernel(s)]
+  PASS  getTokenOffset: pipeline OK (threads: 1024)
+  PASS  getTrtSequenceOffset: pipeline OK (threads: 1024)
+  PASS  getTrtSequenceOffset2d: pipeline OK (threads: 1024)
+  PASS  getTrtSequenceOffsetNoMask: pipeline OK (threads: 1024)
+
+-- onnxruntime__bert_padding_cu.metal  [4 kernel(s)]
+  PASS  getTokenOffset: pipeline OK (threads: 1024)
+  PASS  getTrtSequenceOffset: pipeline OK (threads: 1024)
+  PASS  getTrtSequenceOffset2d: pipeline OK (threads: 1024)
+  PASS  getTrtSequenceOffsetNoMask: pipeline OK (threads: 1024)
+
+-- onnxruntime__fpA_intB_gemm_adaptor.metal  [2 kernel(s)]
+  PASS  transpose_uint8_matrix_and_convert_to_int8_kernel: pipeline OK (threads: 1024)
+  PASS  unpack_transpose_pack_uint4_to_int8_kernel_v2: pipeline OK (threads: 1024)
+
+-- onnxruntime__fpA_intB_gemm_adaptor_cu.metal  [2 kernel(s)]
+  PASS  transpose_uint8_matrix_and_convert_to_int8_kernel: pipeline OK (threads: 1024)
+  PASS  unpack_transpose_pack_uint4_to_int8_kernel_v2: pipeline OK (threads: 1024)
+
+-- onnxruntime__group_query_attention_impl.metal  [1 kernel(s)]
+  PASS  GetSequenceLengths: pipeline OK (threads: 1024)
+
+-- onnxruntime__group_query_attention_impl_cu.metal  [1 kernel(s)]
+  PASS  GetSequenceLengths: pipeline OK (threads: 1024)
+
+-- onnxruntime__longformer_global_impl.metal  [1 kernel(s)]
+  PASS  InitSequenceIndexKernel: pipeline OK (threads: 1024)
+
+-- onnxruntime__longformer_global_impl_cu.metal  [1 kernel(s)]
+  PASS  InitSequenceIndexKernel: pipeline OK (threads: 1024)
+
+-- onnxruntime__ngram_repeat_block_impl.metal  [1 kernel(s)]
+  PASS  banRepeatedTokens: pipeline OK (threads: 1024)
+
+-- onnxruntime__ngram_repeat_block_impl_cu.metal  [1 kernel(s)]
+  PASS  banRepeatedTokens: pipeline OK (threads: 1024)
+
+-- sglang__sgl-kernel_csrc_attention_vertical_slash_index.metal  [2 kernel(s)]
+  PASS  convert_vertical_slash_indexes_kernel: pipeline OK (threads: 896)
+  PASS  convert_vertical_slash_indexes_kernel_mergehead: pipeline OK (threads: 832)
+
+-- sglang__sgl-kernel_csrc_attention_vertical_slash_index_cu.metal  [2 kernel(s)]
+  PASS  convert_vertical_slash_indexes_kernel: pipeline OK (threads: 896)
+  PASS  convert_vertical_slash_indexes_kernel_mergehead: pipeline OK (threads: 832)
+
+-- warp__hashgrid.metal  [1 kernel(s)]
+  PASS  compute_cell_offsets: pipeline OK (threads: 1024)
+
+-- warp__hashgrid_cu.metal  [1 kernel(s)]
+  PASS  compute_cell_offsets: pipeline OK (threads: 1024)
+
+-- batchnorm.metal  [1 kernel(s)]
+  PASS  batchnorm_forward: pipeline OK (threads: 1024)
+
+-- elementwise.metal  [4 kernel(s)]
+  PASS  elementwise_add: add(seq, seq+100)
+  PASS  elementwise_add_scalar: pipeline OK (threads: 1024)
+  PASS  elementwise_mul: mul(3, 7) = 21
+  PASS  elementwise_scale: scale(seq, 2.5)
+
+-- embedding_ops.metal  [4 kernel(s)]
+  PASS  batched_rope: rope(half(1.0), pos=0, theta=10000) = 1.0
+  PASS  embedding_lookup: lookup([0,3,6,9,...], dim=16, half)
+  PASS  fused_token_pos_embedding: pipeline OK (threads: 1024)
+  PASS  vocab_project_argmax: pipeline OK (threads: 1024)
+
+-- flash_attention.metal  [1 kernel(s)]
+  PASS  flash_attention_fwd: pipeline OK (threads: 1024)
+
+-- flash_attention_v2.metal  [2 kernel(s)]
+  PASS  flash_attention_v2_backward_f16: pipeline OK (threads: 1024)
+  PASS  flash_attention_v2_f16: pipeline OK (threads: 896)
+
+-- fused_ops.metal  [8 kernel(s)]
+  PASS  fused_gelu_mul: gelu(x) * 2
+  PASS  fused_layernorm_add: pipeline OK (threads: 1024)
+  PASS  fused_layernorm_gelu: pipeline OK (threads: 1024)
+  PASS  fused_rmsnorm_mul: pipeline OK (threads: 1024)
+  PASS  fused_silu_mul_quantize: outputs in int8 range
+  PASS  fused_silu_mul_quantize: output non-trivial
+  PASS  fused_topk_softmax: pipeline OK (threads: 1024)
+  PASS  residual_rmsnorm: residual_rmsnorm(seq, h=0, gamma=1)
+  PASS  rope_kernel: rope(half(1.0), pos=0, theta=10000) = 1.0
+
+-- gqa_decode.metal  [1 kernel(s)]
+  PASS  gqa_decode_attention: pipeline OK (threads: 1024)
+
+-- im2col.metal  [1 kernel(s)]
+  PASS  im2col_forward: pipeline OK (threads: 1024)
+
+-- moe_routing.metal  [4 kernel(s)]
+  PASS  moe_align_block: pipeline OK (threads: 1024)
+  PASS  moe_permute: pipeline OK (threads: 1024)
+  PASS  moe_topk_gate: pipeline OK (threads: 1024)
+  PASS  moe_unpermute_weight: pipeline OK (threads: 1024)
+
+-- paged_kv_cache.metal  [3 kernel(s)]
+  PASS  paged_attention_score: pipeline OK (threads: 1024)
+  PASS  paged_kv_cache_gather: pipeline OK (threads: 1024)
+  PASS  paged_kv_cache_write: pipeline OK (threads: 1024)
+
+-- pooling.metal  [3 kernel(s)]
+  PASS  avg_pool_forward: pipeline OK (threads: 1024)
+  PASS  global_avg_pool_forward: pipeline OK (threads: 1024)
+  PASS  max_pool_forward: pipeline OK (threads: 1024)
+
+-- quantize_pipeline.metal  [9 kernel(s)]
+  PASS  dequantize_fp8_e4m3: pipeline OK (threads: 1024)
+  PASS  dequantize_int4: pipeline OK (threads: 1024)
+  PASS  dequantize_int8: pipeline OK (threads: 1024)
+  PASS  quantize_fp8_e4m3: pipeline OK (threads: 1024)
+  PASS  quantize_int4: pipeline OK (threads: 1024)
+  PASS  quantize_int8: scale > 0 (got 0.4031496)
+  PASS  quantize_int8: all outputs in int8 range
+  PASS  quantize_int8: output non-trivial
+  PASS  quantized_gemm_int4: pipeline OK (threads: 1024)
+  PASS  quantized_gemm_int8: pipeline OK (threads: 1024)
+  PASS  w4a16_gemm: pipeline OK (threads: 1024)
+
+-- quantized_gemm.metal  [2 kernel(s)]
+  PASS  dequant_q4k_matvec: pipeline OK (threads: 1024)
+  PASS  dequant_q8_0_matvec: pipeline OK (threads: 1024)
+
+-- relu.metal  [2 kernel(s)]
+  PASS  relu_backward: pipeline OK (threads: 1024)
+  PASS  relu_forward: relu([-512..511])
+
+-- sigmoid.metal  [2 kernel(s)]
+  PASS  sigmoid_forward: sigmoid([-5.12..5.11])
+  PASS  tanh_forward: tanh([-5.12..5.11])
+
+-- softmax.metal  [1 kernel(s)]
+  PASS  softmax_forward: softmax sum = 1.0 (got 1.0)
+  PASS  softmax_forward: softmax all >= 0
+  PASS  softmax_forward: softmax argmax matches CPU (96)
+
+-- speculative.metal  [4 kernel(s)]
+  PASS  spec_acceptance_check: pipeline OK (threads: 1024)
+  PASS  spec_argmax: pipeline OK (threads: 1024)
+  PASS  spec_batch_softmax: pipeline OK (threads: 1024)
+  PASS  spec_corrected_dist: pipeline OK (threads: 1024)
+
+-- tensor_ops.metal  [6 kernel(s)]
+  PASS  batched_gemm: pipeline OK (threads: 1024)
+  PASS  fused_attention: pipeline OK (threads: 1024)
+  PASS  gqa_gemm: pipeline OK (threads: 1024)
+  PASS  rmsnorm_kernel: rmsnorm(seq, gamma=1)
+  PASS  silu_mul_kernel: silu(x) * 1.5 (in-place)
+  PASS  tensor_gemm_f16: pipeline OK (threads: 1024)
+
+-- tile_attention.metal  [2 kernel(s)]
+  PASS  tile_attention_forward: pipeline OK (threads: 1024)
+  PASS  tile_attention_multihead: pipeline OK (threads: 1024)
+
+==============================================================
+ RESULTS
+==============================================================
+ Compiled:         855 / 1260
+ Numerical PASS:   145
+ Numerical FAIL:   0
+ Skipped:          0
+==============================================================
